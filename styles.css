@@ -1,0 +1,863 @@
+/* =========================================================
+   SITE DA DRA. PAOLA GONÇALVES
+   CSS organizado para facilitar futuras alterações.
+   ========================================================= */
+
+/* =========================
+   CORES PRINCIPAIS
+   EDITAR AQUI se quiser mudar a identidade visual.
+   ========================= */
+:root {
+    --marsala: #7A3045;
+    --marsala-dark: #572233;
+    --marsala-soft: #A86A79;
+
+    --cream: #F8F5F1;
+    --cream-dark: #EFE8E1;
+    --white: #FFFFFF;
+
+    --text: #292525;
+    --text-soft: #716B69;
+
+    --border: rgba(41, 37, 37, 0.12);
+
+    --serif: "Playfair Display", Georgia, serif;
+    --sans: "DM Sans", Arial, sans-serif;
+
+    --max-width: 1180px;
+}
+
+/* =========================
+   RESET
+   ========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--sans);
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.7;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+.container {
+    width: min(92%, var(--max-width));
+    margin: 0 auto;
+}
+
+/* =========================
+   CABEÇALHO
+   ========================= */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav {
+    min-height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 230px;
+}
+
+.brand-mark {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+}
+
+.brand-name {
+    font-family: var(--serif);
+    font-size: 1.12rem;
+    letter-spacing: .01em;
+    line-height: 1.05;
+}
+
+.brand-name strong {
+    color: var(--marsala);
+    font-weight: 500;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-size: 0.9rem;
+}
+
+.menu a {
+    position: relative;
+    color: var(--text-soft);
+    transition: color .3s ease;
+}
+
+.menu a:hover {
+    color: var(--marsala);
+}
+
+.menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 0;
+    height: 1px;
+    background: var(--marsala);
+    transition: width .3s ease;
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    border: 0;
+    background: transparent;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+/* =========================
+   HERO
+   ========================= */
+.hero {
+    min-height: calc(100vh - 78px);
+    padding: 70px 0;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    align-items: center;
+    gap: 70px;
+}
+
+.eyebrow {
+    color: var(--marsala);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    max-width: 650px;
+    font-family: var(--serif);
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    line-height: 1.05;
+    font-weight: 500;
+}
+
+em {
+    color: var(--marsala);
+    font-style: normal;
+}
+
+.hero-description {
+    max-width: 580px;
+    margin: 28px 0;
+    color: var(--text-soft);
+    font-size: 1.1rem;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.button {
+    padding: 14px 22px;
+    border-radius: 999px;
+    transition: transform .3s ease, background .3s ease, color .3s ease;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}
+
+.button-primary {
+    color: var(--white);
+    background: var(--marsala);
+}
+
+.button-primary:hover {
+    background: var(--marsala-dark);
+}
+
+.button-light {
+    border: 1px solid var(--border);
+    background: var(--white);
+}
+
+.hero-photo {
+    position: relative;
+}
+
+.hero-photo img {
+    display: block;
+    width: 100%;
+    height: min(700px, 76vh);
+    object-fit: contain;
+    object-position: center bottom;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+}
+
+/* Foto recortada com transparência para se integrar ao fundo claro do site. */
+.hero-photo {
+    align-self: end;
+    background: transparent;
+}
+
+.photo-caption {
+    position: absolute;
+    left: -25px;
+    bottom: 25px;
+    padding: 18px 22px;
+    background: var(--white);
+    box-shadow: 0 15px 35px rgba(50,30,35,.14);
+    border-left: 3px solid var(--marsala);
+}
+
+.photo-caption strong,
+.photo-caption span {
+    display: block;
+}
+
+.photo-caption strong {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+}
+
+.photo-caption span {
+    color: var(--text-soft);
+    font-size: .8rem;
+}
+
+/* =========================
+   SEÇÕES
+   ========================= */
+.section {
+    padding: 120px 0;
+}
+
+.section-soft {
+    background: var(--cream);
+}
+
+.two-columns {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 100px;
+    align-items: start;
+}
+
+.section-heading h2 {
+    font-family: var(--serif);
+    font-size: clamp(2.3rem, 4vw, 4rem);
+    line-height: 1.15;
+    font-weight: 500;
+}
+
+.section-heading.centered {
+    max-width: 700px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
+.section-heading.centered > p:last-child {
+    margin-top: 100px;
+    color: var(--text-soft);
+}
+
+.section-text {
+    margin-top: 40px;
+	color: var(--text-soft);
+    font-size: 1.2rem;
+}
+
+.section-text p + p {
+    margin-top: 20px;
+}
+
+
+/* =========================
+   FORMAÇÃO / TIMELINE
+   ========================= */
+.timeline {
+    max-width: 850px;
+    margin: auto;
+}
+
+.timeline-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 30px;
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+}
+
+.timeline-number {
+    color: var(--marsala);
+    font-family: var(--serif);
+    font-size: 1.5rem;
+}
+
+.timeline-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.timeline-item p {
+    color: var(--text-soft);
+}
+
+.timeline-item small {
+    color: var(--marsala);
+}
+
+/* =========================
+   COMPETÊNCIAS
+   ========================= */
+.section-dark {
+    background: var(--marsala-dark);
+    color: var(--white);
+}
+
+.section-dark .eyebrow {
+    color: #E6B7C2;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.card {
+    min-height: 300px;
+    padding: 30px;
+    border: 1px solid rgba(255,255,255,.18);
+    background: rgba(255,255,255,.045);
+    transition: transform .35s ease, background .35s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    background: rgba(255,255,255,.08);
+}
+
+.card-number {
+    display: block;
+    margin-bottom: 80px;
+    color: #E6B7C2;
+    font-family: var(--serif);
+    font-size: 1.3rem;
+}
+
+.card h3 {
+    margin-bottom: 12px;
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.card p {
+    color: rgba(255,255,255,.68);
+    font-size: .9rem;
+}
+
+/* =========================
+   FRASE / FILOSOFIA
+   ========================= */
+.quote-section {
+    padding: 140px 0;
+    text-align: center;
+    background: var(--cream);
+}
+
+.quote-section blockquote {
+    max-width: 950px;
+    margin: auto;
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 4rem);
+    line-height: 1.2;
+}
+
+.quote-author {
+    margin-top: 25px;
+    color: var(--text-soft);
+}
+
+/* =========================
+   GALERIA
+   ========================= */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.gallery-item {
+    min-height: 330px;
+}
+
+.gallery-item.large {
+    grid-row: span 2;
+    min-height: 675px;
+}
+
+.gallery-placeholder {
+    height: 100%;
+    min-height: 330px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px dashed rgba(122,48,69,.35);
+    background: var(--cream);
+    color: var(--marsala);
+}
+
+.gallery-placeholder span {
+    font-family: var(--serif);
+    font-size: 2rem;
+}
+
+.gallery-placeholder p {
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+.gallery-placeholder small {
+    color: var(--text-soft);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-note {
+    margin-top: 18px;
+    color: var(--text-soft);
+    font-size: .75rem;
+}
+
+/* =========================
+   CONTATO
+   ========================= */
+.contact {
+    padding: 120px 0;
+    background: var(--cream);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+}
+
+.contact h2 {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 4vw, 4.2rem);
+    line-height: 1.1;
+    font-weight: 500;
+}
+
+.contact-grid > div:first-child > p:last-child {
+    max-width: 450px;
+    margin-top: 25px;
+    color: var(--text-soft);
+}
+
+.contact-details {
+    border-top: 1px solid var(--border);
+}
+
+.contact-line {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+    transition: color .3s ease;
+}
+
+a.contact-line:hover {
+    color: var(--marsala);
+}
+
+.contact-line span {
+    color: var(--text-soft);
+}
+
+.contact-line strong {
+    text-align: right;
+}
+
+.contact-signature {
+    margin-top: 90px;
+    padding-top: 35px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    text-align: left;
+}
+
+.contact-signature img {
+    width: 78px;
+    height: 78px;
+    object-fit: contain;
+}
+
+.contact-signature strong,
+.contact-signature span {
+    display: block;
+}
+
+.contact-signature strong {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 500;
+}
+
+.contact-signature span {
+    color: var(--text-soft);
+    font-size: .78rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
+/* =========================
+   RODAPÉ
+   ========================= */
+.footer {
+    padding: 35px 0;
+    background: #211A1C;
+    color: var(--white);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    align-items: center;
+}
+
+.footer strong,
+.footer span {
+    display: block;
+}
+
+.footer span,
+.footer p {
+    color: rgba(255,255,255,.55);
+    font-size: .8rem;
+}
+
+/* =========================
+   ANIMAÇÕES
+   ========================= */
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   RESPONSIVO
+   ========================= */
+@media (max-width: 900px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        width: 100%;
+        padding: 25px 5%;
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .menu.active {
+        display: flex;
+    }
+
+    .hero-grid,
+    .two-columns,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .hero {
+        padding: 50px 0 80px;
+    }
+
+    .hero-photo {
+        max-width: 650px;
+        margin: auto;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .section,
+    .contact {
+        padding: 80px 0;
+    }
+
+    .brand {
+        min-width: 0;
+    }
+
+    .brand-mark {
+        width: 40px;
+        height: 40px;
+    }
+
+    .brand-name {
+        font-size: 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-photo img {
+        height: 470px;
+        object-fit: contain;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .photo-caption {
+        left: 10px;
+        bottom: 15px;
+    }
+
+    .cards,
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item.large {
+        grid-row: auto;
+        min-height: 330px;
+    }
+
+    .timeline-item {
+        grid-template-columns: 45px 1fr;
+        gap: 15px;
+    }
+
+    .contact-signature {
+        margin-top: 65px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+/* Formação: apresentação única e discreta da graduação concluída. */
+.education-section .section-heading {
+    margin-bottom: 2rem;
+}
+.education-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    background: #fff;
+    border: 1px solid rgba(122, 48, 69, 0.16);
+    border-radius: 18px;
+}
+.education-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(122, 48, 69, 0.08);
+    color: #7A3045;
+    font-size: 1.4rem;
+}
+.education-status {
+    display: inline-block;
+    margin-bottom: .65rem;
+    color: #7A3045;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .13em;
+}
+.education-content h3 {
+    margin: 0 0 .65rem;
+}
+.education-content p {
+    margin: 0;
+    color: #6d6265;
+    line-height: 1.75;
+}
+@media (max-width: 560px) {
+    .education-card {
+        gap: 1rem;
+        padding: 1.25rem;
+    }
+    .education-icon {
+        flex-basis: 40px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+/* Instituição de ensino na seção Formação. */
+.education-content .education-institution {
+    margin: 0 0 .65rem;
+    color: #7A3045;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   ATENDIMENTOS
+   EDITAR AQUI: cores, espaçamento e organização dos cartões.
+   ========================= */
+.services-section {
+    background: #f7f3f0;
+}
+.services-section .section-heading {
+    max-width: 720px;
+    margin-bottom: 42px;
+}
+.services-section .section-heading > p:last-child {
+    color: #746b68;
+    max-width: 590px;
+    line-height: 1.8;
+}
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+.service-item {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    align-items: start;
+    gap: 20px;
+    padding: 30px 28px;
+    background: rgba(255,255,255,.72);
+    border: 1px solid rgba(122,48,69,.12);
+    border-radius: 24px;
+    box-shadow: 0 8px 26px rgba(68,43,42,.035);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.service-item:hover {
+    transform: translateY(-4px);
+    border-color: rgba(122,48,69,.28);
+    box-shadow: 0 14px 32px rgba(68,43,42,.08);
+}
+.service-icon {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    background: #f4e9e8;
+}
+.service-icon img {
+    display: block;
+    width: 29px;
+    height: 29px;
+    object-fit: contain;
+}
+.service-item h3 {
+    margin: 2px 0 9px;
+    color: #292322;
+    font-size: 1rem;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+.service-item p {
+    margin: 0;
+    color: #766d6a;
+    font-size: .98rem;
+    line-height: 1.75;
+}
+@media (max-width: 700px) {
+    .services-list { grid-template-columns: 1fr; gap: 14px; }
+    .service-item { grid-template-columns: 42px minmax(0, 1fr); gap: 16px; padding: 23px 20px; border-radius: 21px; }
+    .service-icon { width: 40px; height: 40px; border-radius: 13px; }
+    .service-icon img { width: 25px; height: 25px; }
+    .service-item h3 { font-size: .91rem; }
+    .service-item p { font-size: .94rem; }
+}
